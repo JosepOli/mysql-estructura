@@ -38,10 +38,4 @@ SELECT * FROM tienda.producto LEFT JOIN fabricante ON producto.codigo_fabricante
 SELECT producto.nombre FROM tienda.producto LEFT JOIN tienda.fabricante ON 1 = 1 WHERE producto.codigo_fabricante = fabricante.codigo AND fabricante.nombre = "Lenovo" ORDER BY producto.precio DESC LIMIT 1;
 SELECT producto.nombre FROM tienda.producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo AND fabricante.nombre = "Hewlett-Packard" ORDER BY producto.precio ASC LIMIT 1;
 SELECT * FROM tienda.producto LEFT JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE producto.precio >= (SELECT producto.precio FROM tienda.producto LEFT JOIN tienda.fabricante ON 1 = 1 WHERE producto.codigo_fabricante = fabricante.codigo AND fabricante.nombre = "Lenovo" ORDER BY producto.precio DESC LIMIT 1) ;
-SELECT * FROM tienda.producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre = "Asus" AND producto.precio > (SELECT AVG(producto.precio) FROM tienda.producto);
-
-SELECT * FROM tienda.producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo;
-
-
-
-/*41 Llesta tots els productes del fabricant Asus que tenen un preu superior al preu mitjà de tots els seus productes.*/
+SELECT * FROM tienda.producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE producto.precio > (SELECT AVG(producto.precio) WHERE fabricante.nombre = "Asus");
