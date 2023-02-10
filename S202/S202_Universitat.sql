@@ -21,6 +21,7 @@ SELECT departamento.nombre AS "Nombre de departamento", COUNT(profesor.id_depart
 SELECT departamento.nombre AS "Nombre de departamento", COUNT(profesor.id_departamento) AS "Cantidad de profesores" FROM universidad.departamento LEFT JOIN universidad.profesor ON departamento.id = profesor.id_departamento GROUP BY departamento.nombre ORDER BY COUNT(profesor.id_departamento) DESC;
 SELECT grado.nombre AS "Nombre de grado", COUNT(asignatura.id_grado) AS "Cantidad de asignaturas" FROM universidad.grado LEFT JOIN universidad.asignatura ON grado.id = asignatura.id_grado GROUP BY grado.nombre ORDER BY COUNT(asignatura.id_grado) DESC;
 SELECT grado.nombre AS "Nombre de grado", COUNT(asignatura.id_grado) AS "Cantidad de asignaturas" FROM universidad.grado LEFT JOIN universidad.asignatura ON grado.id = asignatura.id_grado GROUP BY grado.nombre HAVING COUNT(asignatura.id_grado) > 40 ORDER BY COUNT(asignatura.id_grado) DESC;
+SELECT grado.nombre AS "Nombre de grado", asignatura.tipo AS "Tipo de asignatura", COUNT(asignatura.creditos) AS "Cantidad de creditos" FROM universidad.grado JOIN asignatura ON grado.id = asignatura.id_grado GROUP BY asignatura.tipo, grado.nombre;
 
 
 SELECT * FROM universidad.departamento;
