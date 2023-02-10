@@ -17,7 +17,10 @@ SELECT departamento.nombre FROM universidad.departamento LEFT JOIN profesor ON p
 
 SELECT COUNT(persona.tipo) FROM universidad.persona WHERE tipo = "alumno";
 SELECT COUNT(persona.tipo) FROM universidad.persona WHERE fecha_nacimiento LIKE "%1999%";
-SELECT departamento.nombre COUNT() 
+SELECT departamento.nombre as "Nombre de departamento", COUNT(profesor.id_departamento) AS "Cantidad de profesores" FROM universidad.departamento JOIN profesor ON departamento.id = profesor.id_departamento GROUP BY departamento.nombre;
+SELECT departamento.nombre as "Nombre de departamento", COUNT(profesor.id_departamento) AS "Cantidad de profesores" FROM universidad.departamento LEFT JOIN universidad.profesor ON departamento.id = profesor.id_departamento GROUP BY departamento.nombre ORDER BY COUNT(profesor.id_departamento) DESC;
+
+
 
 SELECT * FROM universidad.departamento;
 SELECT * FROM universidad.persona;
