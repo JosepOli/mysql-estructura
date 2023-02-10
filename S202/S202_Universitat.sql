@@ -10,8 +10,10 @@ SELECT DISTINCT persona.nombre, persona.apellido1, persona.apellido2 FROM univer
 
 SELECT departamento.nombre, persona.apellido1, persona.apellido2, persona.nombre FROM universidad.persona LEFT JOIN profesor ON profesor.id_profesor = persona.id LEFT JOIN departamento ON departamento.id = profesor.id_departamento ORDER BY departamento.nombre ASC, persona.apellido1 ASC, persona.apellido2 ASC, persona.nombre ASC;
 SELECT persona.apellido1, persona.apellido2, persona.nombre FROM universidad.persona LEFT JOIN profesor ON profesor.id_profesor = persona.id LEFT JOIN departamento ON departamento.id = profesor.id_departamento WHERE departamento.nombre IS NULL ORDER BY persona.apellido1 ASC, persona.apellido2 ASC, persona.nombre ASC;
-SELECT departamento.nombre FROM universidad.departamento LEFT JOIN profesor ON profesor.id_departamento = departamento.id LEFT JOIN  WHERE profesor.nombre IS NULL ORDER BY departamento.nombre ASC;
-
+SELECT DISTINCT departamento.nombre FROM universidad.departamento LEFT JOIN universidad.profesor ON profesor.id_departamento = departamento.id WHERE profesor.id_departamento IS NULL ORDER BY departamento.nombre ASC;
+SELECT persona.apellido1, persona.apellido2, persona.nombre FROM universidad.persona LEFT JOIN profesor ON profesor.id_profesor = persona.id LEFT JOIN asignatura ON asignatura.id = profesor.id_profesor WHERE asignatura.id_profesor IS NULL ORDER BY persona.apellido1 ASC, persona.apellido2 ASC, persona.nombre ASC;
+SELECT DISTINCT asignatura.nombre FROM universidad.asignatura LEFT JOIN profesor ON profesor.id_profesor = asignatura.id_profesor WHERE asignatura.id_profesor IS NULL ORDER BY asignatura.nombre ASC;
+SELECT departamento.nombre FROM universidad.departamento LEFT JOIN profesor ON profesor.id_departamento = departamento.id LEFT JOIN asignatura ON asignatura.id = profesor.id_profesor WHERE asignatura.id_profesor IS NULL;
 
 SELECT * FROM universidad.departamento;
 SELECT * FROM universidad.persona;
