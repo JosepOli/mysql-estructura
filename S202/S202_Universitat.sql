@@ -15,6 +15,10 @@ SELECT persona.apellido1, persona.apellido2, persona.nombre FROM universidad.per
 SELECT DISTINCT asignatura.nombre FROM universidad.asignatura LEFT JOIN profesor ON profesor.id_profesor = asignatura.id_profesor WHERE asignatura.id_profesor IS NULL ORDER BY asignatura.nombre ASC;
 SELECT departamento.nombre FROM universidad.departamento LEFT JOIN profesor ON profesor.id_departamento = departamento.id LEFT JOIN asignatura ON asignatura.id = profesor.id_profesor WHERE asignatura.id_profesor IS NULL;
 
+SELECT COUNT(persona.tipo) FROM universidad.persona WHERE tipo = "alumno";
+SELECT COUNT(persona.tipo) FROM universidad.persona WHERE fecha_nacimiento LIKE "%1999%";
+SELECT departamento.nombre COUNT() 
+
 SELECT * FROM universidad.departamento;
 SELECT * FROM universidad.persona;
 SELECT * FROM universidad.profesor;
