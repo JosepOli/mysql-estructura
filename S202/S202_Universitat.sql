@@ -24,7 +24,6 @@ SELECT grado.nombre AS "Nombre de grado", COUNT(asignatura.id_grado) AS "Cantida
 SELECT grado.nombre AS "Nombre de grado", asignatura.tipo AS "Tipo de asignatura", COUNT(asignatura.creditos) AS "Cantidad de creditos" FROM universidad.grado JOIN asignatura ON grado.id = asignatura.id_grado GROUP BY asignatura.tipo, grado.nombre;
 SELECT curso_escolar.anyo_inicio AS "Año de inicio", COUNT(asma.id_curso_escolar) AS "Numero de alumnos matriculados" FROM universidad.curso_escolar JOIN alumno_se_matricula_asignatura asma ON curso_escolar.id = asma.id_curso_escolar GROUP BY curso_escolar.anyo_inicio;
 
-
 SELECT * FROM universidad.departamento;
 SELECT * FROM universidad.persona;
 SELECT * FROM universidad.profesor;
